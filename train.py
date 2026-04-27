@@ -44,12 +44,12 @@ def main():
         print(f"\n🔹 Split {split_name}")
         print("-" * 50)
 
-        # Regresión Lineal
-        lr_row = df_resultados[(df_resultados["Modelo"] == "Regresión Lineal") &
+        # Regresion Lineal
+        lr_row = df_resultados[(df_resultados["Modelo"] == "Regresion Lineal") &
                                 (df_resultados["Split"] == split_name)].iloc[0]
-        print(f"\n  Regresión Lineal:")
+        print(f"\n  Regresion Lineal:")
         print(f"    MSE: {lr_row['MSE']:.4f}")
-        print(f"    R²:  {lr_row['R²']:.4f}")
+        print(f"    R2:  {lr_row['R2']:.4f}")
         print(f"    Intercepto: {lr_row['Intercepto']:.4f}")
         for feat, coef in lr_row["Coeficientes"].items():
             print(f"    {feat}: {coef:.4f}")
@@ -61,7 +61,7 @@ def main():
 
         print(f"\n  KNN (mejor k={int(best_knn['k'])}):")
         print(f"    MSE: {best_knn['MSE']:.4f}")
-        print(f"    R²:  {best_knn['R²']:.4f}")
+        print(f"    R2:  {best_knn['R2']:.4f}")
 
     print("\n" + "=" * 60)
     print("RESUMEN")

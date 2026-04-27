@@ -59,10 +59,10 @@ class ModelosFatiga:
 
             self.resultados.append({
                 "Split": split_name,
-                "Modelo": "Regresión Lineal",
+                "Modelo": "Regresion Lineal",
                 "k": "-",
                 "MSE": mse_lr,
-                "R²": r2_lr,
+                "R2": r2_lr,
                 "Intercepto": lr.intercept_,
                 "Coeficientes": dict(zip(FEATURES, lr.coef_))
             })
@@ -85,7 +85,7 @@ class ModelosFatiga:
                     "Modelo": "KNN",
                     "k": k,
                     "MSE": mse_knn,
-                    "R²": r2_knn
+                    "R2": r2_knn
                 })
 
                 if mse_knn < best_mse:
