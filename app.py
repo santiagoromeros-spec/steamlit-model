@@ -45,6 +45,17 @@ st.markdown("""
         color: #ffffff;
     }
 
+    /* Hide native sidebar collapse/expand button (shows text fallback) */
+    [data-testid="stSidebar"] > div:first-child {
+        display: none !important;
+    }
+
+    /* Hide material icons in sidebar (text fallback issue) */
+    [data-testid="stSidebar"] span.material-symbols-outlined,
+    [data-testid="stSidebar"] [data-testid="stIconIcon"] {
+        display: none !important;
+    }
+
     /* Main background */
     .stApp {
         background-color: #ffffff;
@@ -73,21 +84,34 @@ st.markdown("""
         border-bottom: 3px solid #000000;
     }
 
-    /* Buttons */
+    /* Buttons — general */
     .stButton > button {
         font-family: 'Space Mono', monospace !important;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         font-size: 0.75rem;
-        border: 2px solid #000000;
-        background-color: #000000;
-        color: #ffffff;
+        border: 2px solid #ffffff;
+        background-color: #ffffff;
+        color: #000000;
         border-radius: 0;
         width: 100%;
-        transition: all 0.1s;
+        transition: all 0.15s;
     }
 
     .stButton > button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        border-color: #ffffff;
+    }
+
+    /* Buttons — en sidebar (fondo negro) */
+    [data-testid="stSidebar"] .stButton > button {
+        border: 2px solid #ffffff;
+        background-color: #000000;
+        color: #ffffff;
+    }
+
+    [data-testid="stSidebar"] .stButton > button:hover {
         background-color: #ffffff;
         color: #000000;
     }
@@ -178,6 +202,20 @@ st.markdown("""
         background: #ffffff;
     }
 
+    /* Expanders dentro de sidebar (fondo negro) */
+    [data-testid="stSidebar"] .streamlit-expanderHeader {
+        border: 1px solid #ffffff;
+        background: #000000;
+        color: #ffffff;
+    }
+
+    [data-testid="stSidebar"] .streamlit-expanderContent {
+        border: 1px solid #333333;
+        border-top: none;
+        background: #111111;
+        color: #ffffff;
+    }
+
     /* Selectbox / Number inputs */
     .stSelectbox > div > div, .stNumberInput > div > div {
         font-family: 'Space Mono', monospace;
@@ -202,6 +240,37 @@ st.markdown("""
         border: 2px dashed #000000;
         border-radius: 0;
         background: #ffffff;
+        color: #000000;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Upload button inside dropzone */
+    [data-testid="stFileUploadDropzone"] button {
+        border: 1px solid #000000;
+        background: #000000;
+        color: #ffffff;
+        font-family: 'Space Mono', monospace;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        border-radius: 0;
+    }
+
+    /* Hide icon text fallback (e.g. "arrow_down") */
+    [data-testid="stFileUploadDropzone"] [data-testid="stIconIcon"] {
+        display: none !important;
+    }
+
+    /* Ensure uploader label is visible and styled */
+    .stFileUploader label {
+        font-family: 'Space Mono', monospace;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        color: #000000;
     }
 
     /* Footer */
