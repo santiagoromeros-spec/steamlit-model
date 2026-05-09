@@ -30,7 +30,11 @@ st.markdown("""
         --gray-border: #cccccc;
     }
 
-    * {
+    /* Aplicar fuente monospace solo a elementos de texto / UI, nunca a icon fonts */
+    body, p, h1, h2, h3, h4, h5, h6, span:not(.material-symbols-outlined):not([data-testid="stIconIcon"]),
+    div:not([data-testid="stIconIcon"]), input, button, select, label, table, th, td,
+    .stMarkdownContainer, .streamlit-expanderHeader, .stButton > button,
+    [data-testid="stMetricLabel"], [data-testid="stMetricValue"] {
         font-family: 'Space Mono', 'Courier New', monospace !important;
     }
 
@@ -38,22 +42,16 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-color: #000000 !important;
         border-right: 2px solid #ffffff;
-        width: 260px !important;
     }
 
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
         color: #ffffff;
     }
 
-    /* Hide native sidebar collapse/expand button (shows text fallback) */
-    [data-testid="stSidebar"] > div:first-child {
-        display: none !important;
-    }
-
-    /* Hide material icons in sidebar (text fallback issue) */
+    /* Iconos dentro de la sidebar en blanco para que contrasten */
     [data-testid="stSidebar"] span.material-symbols-outlined,
     [data-testid="stSidebar"] [data-testid="stIconIcon"] {
-        display: none !important;
+        color: #ffffff !important;
     }
 
     /* Main background */
@@ -259,9 +257,9 @@ st.markdown("""
         border-radius: 0;
     }
 
-    /* Hide icon text fallback (e.g. "arrow_down") */
+    /* Icono del uploader en negro para que combine con el tema */
     [data-testid="stFileUploadDropzone"] [data-testid="stIconIcon"] {
-        display: none !important;
+        color: #000000 !important;
     }
 
     /* Ensure uploader label is visible and styled */
@@ -621,7 +619,7 @@ if st.session_state.entrenado:
                     )
 
 else:
-    st.info("Usa el boton ENTRAR del panel izquierdo para comenzar.")
+    st.info("Usa el boton ENTRENAR / REENTRENAR del panel izquierdo para comenzar.")
 
 # ─── FOOTER ───
 st.markdown('<p class="footer">// FATIGA — MODELO DE PREDICCION EN CICLISMO //</p>', unsafe_allow_html=True)
